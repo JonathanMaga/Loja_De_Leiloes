@@ -5,6 +5,8 @@
  */
 package Logica;
 
+import java.util.List;
+import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -14,18 +16,46 @@ import javax.persistence.PersistenceContext;
  * @author jonathan
  */
 @Stateless
-public class UtilizadorFacade extends AbstractFacade<Utilizador> implements UtilizadorFacadeLocal {
+public class UtilizadorFacade  implements UtilizadorFacadeLocal {
 
-    @PersistenceContext(unitName = "Loja_De_LeiloesPU")
-    private EntityManager em;
+    @EJB
+    DAOLocal dao;
 
     @Override
-    protected EntityManager getEntityManager() {
-        return em;
+    public void create(Utilizador utilizador) {
+       dao.getEntityManager().persist(utilizador);
     }
 
-    public UtilizadorFacade() {
-        super(Utilizador.class);
+    @Override
+    public void edit(Utilizador utilizador) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    @Override
+    public void remove(Utilizador utilizador) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public Utilizador find(Object id) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<Utilizador> findAll() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<Utilizador> findRange(int[] range) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public int count() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+   
     
 }

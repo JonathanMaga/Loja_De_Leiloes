@@ -92,8 +92,12 @@ public class Utilizador implements Serializable {
     public Utilizador() {
     }
 
-    public Utilizador(Integer idSer) {
-        this.idSer = idSer;
+    public Utilizador(String nomeUser, String username, String morada, int contato, String password){
+        this.nomeUser = nomeUser;
+        this.username = username;
+        this.morada = morada;
+        this.contato = contato;
+        this.password = password;
     }
 
     public Utilizador(Integer idSer, String nomeUser, String username, String morada, int contato, String password) {

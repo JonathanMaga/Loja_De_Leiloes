@@ -11,6 +11,7 @@ import javax.persistence.PersistenceContext;
  *
  * @author jonathan
  */
+@Singleton
 public class DAO implements DAOLocal{
     @PersistenceContext(unitName = "Loja_De_LeiloesPU")
     private EntityManager em;

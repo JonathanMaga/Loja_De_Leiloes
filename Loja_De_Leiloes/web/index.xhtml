@@ -11,19 +11,19 @@
     <ui:define name="atividade">
         <h1>Registo de Novo utilizador</h1>
         <h:form id="formRegisto">
-            Nome:<h:inputText id="nomeUtilizador" title="Nome de Utilizador" />
+            Nome:<h:inputText id="nomeUtilizador" value="#{visitanteBean.nome}" title="Nome de Utilizador" />
             <p/>
-            Username:<h:inputText id="username" title="Username" />
+            Username:<h:inputText id="username" value="#{visitanteBean.username}"  title="Username" />
             <p/>
-            Morada:<h:inputText id="morada" title="Morada" />
+            Morada:<h:inputText id="morada" value="#{visitanteBean.morada}"  title="Morada" />
             <p/>
-            Contato:<h:inputText id="contato" title="Contato" />
+            Contato:<h:inputText id="contato" value="#{visitanteBean.contato}"  title="Contato" />
             <p/>
-            Password:<h:inputText id="pass1" title="Password" />
+            Password:<h:inputText id="pass1" value="#{visitanteBean.password}"  title="Password" />
             <p/>
-            Confirme Password:<h:inputText id="pass2" title="Password2" />
+            Confirme Password:<h:inputText id="pass2" value="#{visitanteBean.password2}"  title="Password2" />
             <p/>
-            <h:commandButton value="Registar" id="Regitar"> </h:commandButton>
+            <h:commandButton value="Registar" action="#{visitanteBean.registar()}" id="Regitar"> </h:commandButton>
             
         </h:form>
         
