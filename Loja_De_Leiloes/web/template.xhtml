@@ -1,0 +1,76 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <h:outputStylesheet library="css" name="default.css"/>
+        <h:outputStylesheet library="css" name="StyleSheet.css"/>
+        <title>Facelets Template</title>
+    </h:head>
+
+    <h:body>
+
+
+
+        <h:form id="form1"> 
+
+            <div id="templatemo_container">
+                <div id="templatemo_topsection">
+                    <div id="templatemo_topsection_title">Loja de Leilões</div>
+                    <div class="templatemo_topmenu">
+                        <h:commandButton id="ImageButton1"  class="icones" image="./resources/images/info.png" title="Informações" />
+                        <h:commandButton id="ImageButton2"  class="icones" image="./resources/images/servicos.png" title="Serviços" />
+                        <h:commandButton id="ImageButton3"  class="icones" image="./resources/images/emergencia.png" title="Emergencias" />
+                         <h:commandButton id="ImageButton4"  class="icones" image="./resources/images/team.png" title="Equipa" />
+                          <h:commandButton id="ImageButton5"  class="icones" image="./resources/images/globe.png" title="Áreas de Actuação" />
+                           <h:commandButton id="ImageButton6"  class="icones" image="./resources/images/contacto.png" title="Contactos" />
+                            <h:commandButton id="ImageButton7"  class="icones" image="./resources/images/partner.png" title="Parcerias" />
+                    </div>
+                </div>
+
+
+                <div id="templatemo_left_column">
+                    <div id="templatemo_left_top"></div>
+                   
+                    <ul><li class="button"><h:link value="Newsletter"/></li>
+                        <li class="button"><h:link value="Últimos itens vendidos"/></li>
+                        <li class="button"><h:link value="Registar"/></li>
+                        <li class="button"><h:link value="Login"/></li>
+                      
+                    </ul>
+
+                </div>
+
+
+                <div id="templatemo_right_column">
+                    <div id="templatemo_right_top"></div>
+                    <div id="templatemo_right_mid"> 
+                         <ui:insert name="atividade"></ui:insert>
+                    </div>
+                </div>    
+                <div id="templatemo_right_bot">
+                    Rua Dr.Carlos Barbosa, 17, Murtosa (freguesia)<br />
+                    918192275 | 927699774<br />
+                    mobilvet.geral@gmail.com<br />
+
+                </div>
+
+
+
+
+
+
+
+                <br />
+
+
+
+
+            </div>
+
+        </h:form>
+    </h:body>
+</html>

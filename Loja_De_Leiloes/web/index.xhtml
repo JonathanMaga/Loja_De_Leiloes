@@ -2,11 +2,36 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html">
-    <h:head>
-        <title>Facelet Title</title>
-    </h:head>
-    <h:body>
-        Hello from Facelets
-    </h:body>
+    <ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./template.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns="http://www.w3.org/1999/xhtml">
+        
+        
+    <ui:define name="atividade">
+        <h1>Registo de Novo utilizador</h1>
+        <h:form id="formRegisto">
+            Nome:<h:inputText id="nomeUtilizador" title="Nome de Utilizador" />
+            <p/>
+            Username:<h:inputText id="username" title="Username" />
+            <p/>
+            Morada:<h:inputText id="morada" title="Morada" />
+            <p/>
+            Contato:<h:inputText id="contato" title="Contato" />
+            <p/>
+            Password:<h:inputText id="pass1" title="Password" />
+            <p/>
+            Confirme Password:<h:inputText id="pass2" title="Password2" />
+            <p/>
+            <h:commandButton value="Registar" id="Regitar"> </h:commandButton>
+            
+        </h:form>
+        
+            
+    </ui:define>    
+        
+    </ui:composition>
+    
+
 </html>
 
