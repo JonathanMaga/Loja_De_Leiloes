@@ -7,7 +7,6 @@ package Bean;
 
 import Logica.Utilizador;
 import Logica.UtilizadorFacadeLocal;
-import static com.sun.corba.se.spi.presentation.rmi.StubAdapter.request;
 import java.io.IOException;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
@@ -16,8 +15,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.EJB;
 import javax.faces.context.FacesContext;
-import javax.servlet.http.HttpServletRequest;
-import javax.xml.bind.ParseConversionEvent;
+
 
 /**
  *
