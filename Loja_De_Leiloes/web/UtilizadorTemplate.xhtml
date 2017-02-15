@@ -6,16 +6,15 @@
 
     <h:head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <h:outputStylesheet library="css" name="default.css"/>
-        <h:outputStylesheet library="css" name="StyleSheet.css"/>
+        <h:outputStylesheet name="./css/default.css"/>
+        <h:outputStylesheet name="./css/cssLayout.css"/>
+        <h:outputStylesheet name="./css/StyleSheet.css"/>
         <title>Facelets Template</title>
     </h:head>
 
     <h:body>
 
-
-
-        <h:form id="form1"> 
+         <h:form id="form1"> 
 
             <div id="templatemo_container">
                 <div id="templatemo_topsection">
@@ -35,10 +34,14 @@
                 <div id="templatemo_left_column">
                     <div id="templatemo_left_top"></div>
                    
-                    <ul><li class="button"><h:link value="Newsletter"/></li>
-                        <li class="button"><h:link value="Últimos itens vendidos"/></li>
-                        <li class="button"><h:link value="Registar" outcome="RegistaUtilizador.xhtml"/></li>
-                        <li class="button"><h:link value="Login" outcome="Login.xhtml" /></li>
+                    <ul><li class="button"><h:link value="Gestão de conta"/></li>
+                        <li class="button"><h:link value="Mensagens"/></li>
+                        <li class="button"><h:link value="Vender Item"/></li>
+                        <li class="button"><h:link value="Os meus Itens"/></li>
+                        <li class="button"><h:link value="Leilões"/></li>
+                        <li class="button"><h:link value="Histórico"/></li>
+                        <li class="button"><h:link value="Saldo e Carregamentos"/></li>
+                        <li class="button"><h:link value="Newsletter"/></li>
                       
                     </ul>
 
@@ -48,7 +51,7 @@
                 <div id="templatemo_right_column">
                     <div id="templatemo_right_top"></div>
                     <div id="templatemo_right_mid"> 
-                         <ui:insert name="atividade"></ui:insert>
+                         <ui:insert name="atividadeUser"></ui:insert>
                     </div>
                 </div>    
                 <div id="templatemo_right_bot">
@@ -72,5 +75,7 @@
             </div>
 
         </h:form>
+
     </h:body>
+
 </html>

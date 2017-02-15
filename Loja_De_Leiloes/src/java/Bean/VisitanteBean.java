@@ -7,10 +7,16 @@ package Bean;
 
 import Logica.Utilizador;
 import Logica.UtilizadorFacadeLocal;
+import static com.sun.corba.se.spi.presentation.rmi.StubAdapter.request;
+import java.io.IOException;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.ejb.EJB;
+import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpServletRequest;
 import javax.xml.bind.ParseConversionEvent;
 
 /**
@@ -26,13 +32,13 @@ public class VisitanteBean implements Serializable {
      */
     @EJB
     private UtilizadorFacadeLocal utilizadorFacade;
-    String nome;
-    String username;
-    String password;
-    String password2;
-    int contato;
-    String morada;
-    
+    private String nome;
+    private String username;
+    private String password;
+    private String password2;
+    private int contato;
+    private String morada;
+    private String ThisUsername = "guest";
         
     public VisitanteBean() {
     }
@@ -52,9 +58,10 @@ public class VisitanteBean implements Serializable {
     }
 
     public void setNome(String nome) {
-        this.nome = nome;
+        String foo =FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("user");
+        this.nome = nome+foo;
     }
-
+ 
     public String getUsername() {
         return username;
     }
@@ -90,8 +97,21 @@ public class VisitanteBean implements Serializable {
     
     
     public void registar(){
-       Utilizador utilizador = new Utilizador(nome, username, morada, contato, password);
-       utilizadorFacade.create(utilizador);
+     Utilizador utilizador = new Utilizador(nome, username, morada, contato, password);
+       if(utilizadorFacade.ValidaNovoUseramee(username) > 0){
+           nome="USADO";
+       }
+       else{
+          
+           utilizadorFacade.create(utilizador);
+        Object put = FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("user", username);
+        try {
+            FacesContext.getCurrentInstance().getExternalContext().redirect("index.xhtml?user="+username);
+        } catch (IOException ex) {
+            Logger.getLogger(VisitanteBean.class.getName()).log(Level.SEVERE, null, ex);
+        }
+           
+        }
     }
     
 }

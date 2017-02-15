@@ -22,6 +22,8 @@ public interface UtilizadorFacadeLocal {
     void remove(Utilizador utilizador);
 
     Utilizador find(Object id);
+    
+    int ValidaNovoUseramee(String username);
 
     List<Utilizador> findAll();
 

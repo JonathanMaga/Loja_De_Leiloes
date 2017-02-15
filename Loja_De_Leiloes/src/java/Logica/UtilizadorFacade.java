@@ -40,6 +40,13 @@ public class UtilizadorFacade  implements UtilizadorFacadeLocal {
     public Utilizador find(Object id) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+    
+    @Override
+    public int ValidaNovoUseramee(String username) {
+         return dao.getEntityManager().
+                createNamedQuery("Utilizador.findByUsername").setParameter("username",username).getResultList().size();
+                
+    }
 
     @Override
     public List<Utilizador> findAll() {
