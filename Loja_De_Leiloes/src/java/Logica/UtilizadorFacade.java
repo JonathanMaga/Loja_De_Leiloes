@@ -5,11 +5,11 @@
  */
 package Logica;
 
+import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
+
 
 /**
  *
@@ -39,6 +39,18 @@ public class UtilizadorFacade  implements UtilizadorFacadeLocal {
     @Override
     public Utilizador find(Object id) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    
+    @Override
+    public Utilizador findByUserName(String username) {
+      List<Utilizador> 
+      users =  dao.getEntityManager().
+                createNamedQuery("Utilizador.findByUsername").setParameter("username",username).getResultList();
+      if(users.size() > 0)
+          return users.get(0);
+      else
+          return null;
     }
     
     @Override

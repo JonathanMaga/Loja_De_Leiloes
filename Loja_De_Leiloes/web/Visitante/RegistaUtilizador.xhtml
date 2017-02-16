@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html">
     <ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-                template="./template.xhtml"
+                template="../Template/template.xhtml"
                 xmlns:h="http://xmlns.jcp.org/jsf/html"
                 xmlns="http://www.w3.org/1999/xhtml">
         
@@ -11,19 +11,19 @@
     <ui:define name="atividade">
         <h1>Registo de Novo utilizador</h1>
         <h:form id="formRegisto">
-            Nome:<h:inputText id="nomeUtilizador" value="#{visitanteBean.nome}" title="Nome de Utilizador" />
+            Nome:<h:inputText id="nomeUtilizador" value="#{registaBean.nome}" title="Nome de Utilizador" />
             <p/>
-            Username:<h:inputText id="username" value="#{visitanteBean.username}"  title="Username" />
+            Username:<h:inputText id="username" value="#{registaBean.username}"  title="Username" />
             <p/>
-            Morada:<h:inputText id="morada" value="#{visitanteBean.morada}"  title="Morada" />
+            Morada:<h:inputText id="morada" value="#{registaBean.morada}"  title="Morada" />
             <p/>
-            Contato:<h:inputText id="contato" value="#{visitanteBean.contato}"  title="Contato" />
+            Contato:<h:inputText id="contato" value="#{registaBean.contato}"  title="Contato" />
             <p/>
-            Password:<h:inputText id="pass1" value="#{visitanteBean.password}"  title="Password" />
+            Password:<h:inputText id="pass1" value="#{registaBean.password}"  title="Password" />
             <p/>
-            Confirme Password:<h:inputText id="pass2" value="#{visitanteBean.password2}"  title="Password2" />
+            Confirme Password:<h:inputText id="pass2" value="#{registaBean.password2}"  title="Password2" />
             <p/>
-            <h:commandButton value="Registar" action="#{visitanteBean.registar()}" id="Regitar"> </h:commandButton>
+            <h:commandButton value="Registar" action="#{registaBean.registar()}" id="Regitar"> </h:commandButton>
             
         </h:form>
         

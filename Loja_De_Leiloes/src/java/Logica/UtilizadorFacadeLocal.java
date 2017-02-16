@@ -23,6 +23,8 @@ public interface UtilizadorFacadeLocal {
 
     Utilizador find(Object id);
     
+    Utilizador findByUserName(String username);
+    
     int ValidaNovoUseramee(String username);
 
     List<Utilizador> findAll();

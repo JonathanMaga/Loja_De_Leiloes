@@ -6,18 +6,18 @@
 
     <body>
 
-        <ui:composition template="./template.xhtml">
+        <ui:composition template="../Template/template.xhtml">
 
             <ui:define name="atividade">
                 <h:form>
                     <h:outputFormat value="Username"/>
-                    <h:inputText id="usernameLogin" value=""></h:inputText>
+                    <h:inputText id="usernameLogin" value="#{userController.username}" ></h:inputText>
                     <p/>
                     <h:outputFormat value="Password"/>
-                    <h:inputText id="PassLogin" value=""></h:inputText>
+                    <h:inputText id="PassLogin" value="#{userController.password}" ></h:inputText>
                     <p/>
-                    <h:commandButton value="Entrar"/>
-                    
+                    <h:commandButton value="Entrar" action="#{userController.login()}"/>
+
                 </h:form>
             </ui:define>
 
