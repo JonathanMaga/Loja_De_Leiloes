@@ -24,6 +24,9 @@ public class UtilizadorFacade  implements UtilizadorFacadeLocal {
     @Override
     public void create(Utilizador utilizador) {
        dao.getEntityManager().persist(utilizador);
+       Utilizador a = dao.getEntityManager().find(Utilizador.class, 1);
+       
+      
     }
 
     @Override

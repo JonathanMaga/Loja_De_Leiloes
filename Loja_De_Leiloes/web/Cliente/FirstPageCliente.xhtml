@@ -2,12 +2,14 @@
 <!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
       
 <ui:composition  template="../Template/UtilizadorTemplate.xhtml"
-                xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
-    <!-- <f:metadata xmlns:f="http://xmlns.jcp.org/jsf/core">
+                 xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                 xmlns:h="http://xmlns.jcp.org/jsf/html">
+        <f:metadata xmlns:f="http://xmlns.jcp.org/jsf/core">
             <f:viewAction action="#{userController.validateUserAccess}" />
-        </f:metadata> -->
+        </f:metadata> 
             <ui:define name="atividadeUser">
-                ele sabe
+                <H1>Olá <h:outputText value="#{userController.nome} "/> seja bem-vindo</H1>
+                
             </ui:define>
 </ui:composition>
 

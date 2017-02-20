@@ -39,6 +39,10 @@ public class UserController implements Serializable {
     public String getUsername() {
         return Username;
     }
+    
+    public String getNome(){
+        return utilizador.getNomeUser();
+    }
 
     public void setUsername(String Username) {
         this.Username = Username;
