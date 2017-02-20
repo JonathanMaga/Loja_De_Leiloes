@@ -64,15 +64,12 @@ public class UserController implements Serializable {
     }
         
     public String login(){
-     Utilizador u=  utilizadorFacade.findByUserName(Username);
-     if(u!= null)
-         this.utilizador = u;
-     else
-         return null;
+     this.utilizador =  utilizadorFacade.findByUserName(Username);
+     
      if(utilizador.getUsername().equals(this.Username)){
          if(utilizador.getPassword().equals(this.Password)){
              ThisUsername = utilizador.getUsername();
-             return "FirstPageCliente";
+             return "../FirstPageCliente.xhtml";
          }
          else{
              return null;
