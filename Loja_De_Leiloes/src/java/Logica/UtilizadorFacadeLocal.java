@@ -22,15 +22,15 @@ public interface UtilizadorFacadeLocal {
     void remove(Utilizador utilizador);
 
     Utilizador find(Object id);
-    
-    Utilizador findByUserName(String username);
-    
-    int ValidaNovoUseramee(String username);
 
     List<Utilizador> findAll();
 
     List<Utilizador> findRange(int[] range);
 
     int count();
+    
+    int ValidaNovoUseramee(String username);
+    
+    Utilizador findByUserName(String username);
     
 }

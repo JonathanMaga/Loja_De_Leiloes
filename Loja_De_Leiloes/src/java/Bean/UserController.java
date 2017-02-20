@@ -69,7 +69,7 @@ public class UserController implements Serializable {
      if(utilizador.getUsername().equals(this.Username)){
          if(utilizador.getPassword().equals(this.Password)){
              ThisUsername = utilizador.getUsername();
-             return "../FirstPageCliente.xhtml";
+             return "FirstPageCliente";
          }
          else{
              return null;

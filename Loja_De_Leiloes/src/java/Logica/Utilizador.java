@@ -7,22 +7,20 @@ package Logica;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.util.Collection;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -40,7 +38,8 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Utilizador.findByContato", query = "SELECT u FROM Utilizador u WHERE u.contato = :contato")
     , @NamedQuery(name = "Utilizador.findByPassword", query = "SELECT u FROM Utilizador u WHERE u.password = :password")
     , @NamedQuery(name = "Utilizador.findByEstado", query = "SELECT u FROM Utilizador u WHERE u.estado = :estado")
-    , @NamedQuery(name = "Utilizador.findBySaldo", query = "SELECT u FROM Utilizador u WHERE u.saldo = :saldo")})
+    , @NamedQuery(name = "Utilizador.findBySaldo", query = "SELECT u FROM Utilizador u WHERE u.saldo = :saldo")
+    , @NamedQuery(name = "Utilizador.findByFotoPerfil", query = "SELECT u FROM Utilizador u WHERE u.fotoPerfil = :fotoPerfil")})
 public class Utilizador implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -78,26 +77,29 @@ public class Utilizador implements Serializable {
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Column(name = "saldo")
     private BigDecimal saldo;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "utilizador")
-    private Collection<Licitar> licitarCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "vendedor")
-    private Collection<Item> itemCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idComprador")
-    private Collection<Venda> vendaCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "destinatario")
-    private Collection<Mensagem> mensagemCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "remetente")
-    private Collection<Mensagem> mensagemCollection1;
+    @Size(max = 254)
+    @Column(name = "foto_perfil")
+    private String fotoPerfil;
+    @JoinColumn(name = "id_tipo_conta", referencedColumnName = "id_tipo_conta")
+    @ManyToOne(optional = false)
+    private Tipodeconta idTipoConta;
 
     public Utilizador() {
     }
 
-    public Utilizador(String nomeUser, String username, String morada, int contato, String password){
-        this.nomeUser = nomeUser;
+    public Utilizador(Integer idSer) {
+        this.idSer = idSer;
+    }
+    
+    public Utilizador(String nome, String username, String morada, int contato, String password){
+        this.nomeUser = nome;
         this.username = username;
         this.morada = morada;
         this.contato = contato;
         this.password = password;
+        this.saldo = new BigDecimal(0.00);
+        this.estado = false;
+        this.idTipoConta = new Tipodeconta(1);  
     }
 
     public Utilizador(Integer idSer, String nomeUser, String username, String morada, int contato, String password) {
@@ -173,49 +175,20 @@ public class Utilizador implements Serializable {
         this.saldo = saldo;
     }
 
-    @XmlTransient
-    public Collection<Licitar> getLicitarCollection() {
-        return licitarCollection;
+    public String getFotoPerfil() {
+        return fotoPerfil;
     }
 
-    public void setLicitarCollection(Collection<Licitar> licitarCollection) {
-        this.licitarCollection = licitarCollection;
+    public void setFotoPerfil(String fotoPerfil) {
+        this.fotoPerfil = fotoPerfil;
     }
 
-    @XmlTransient
-    public Collection<Item> getItemCollection() {
-        return itemCollection;
+    public Tipodeconta getIdTipoConta() {
+        return idTipoConta;
     }
 
-    public void setItemCollection(Collection<Item> itemCollection) {
-        this.itemCollection = itemCollection;
-    }
-
-    @XmlTransient
-    public Collection<Venda> getVendaCollection() {
-        return vendaCollection;
-    }
-
-    public void setVendaCollection(Collection<Venda> vendaCollection) {
-        this.vendaCollection = vendaCollection;
-    }
-
-    @XmlTransient
-    public Collection<Mensagem> getMensagemCollection() {
-        return mensagemCollection;
-    }
-
-    public void setMensagemCollection(Collection<Mensagem> mensagemCollection) {
-        this.mensagemCollection = mensagemCollection;
-    }
-
-    @XmlTransient
-    public Collection<Mensagem> getMensagemCollection1() {
-        return mensagemCollection1;
-    }
-
-    public void setMensagemCollection1(Collection<Mensagem> mensagemCollection1) {
-        this.mensagemCollection1 = mensagemCollection1;
+    public void setIdTipoConta(Tipodeconta idTipoConta) {
+        this.idTipoConta = idTipoConta;
     }
 
     @Override

@@ -5,25 +5,22 @@
  */
 package Logica;
 
-import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
-
 
 /**
  *
  * @author jonathan
  */
 @Stateless
-public class UtilizadorFacade  implements UtilizadorFacadeLocal {
-
-    @EJB
-    DAOLocal dao;
-
+public class UtilizadorFacade implements UtilizadorFacadeLocal{
+    @EJB   
+    private DAOLocal dao;
+    
     @Override
     public void create(Utilizador utilizador) {
-       dao.getEntityManager().persist(utilizador);
+        dao.getEntityManager().persist(utilizador);
     }
 
     @Override
@@ -39,25 +36,6 @@ public class UtilizadorFacade  implements UtilizadorFacadeLocal {
     @Override
     public Utilizador find(Object id) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
-    
-    @Override
-    public Utilizador findByUserName(String username) {
-      List<Utilizador> 
-      users =  dao.getEntityManager().
-                createNamedQuery("Utilizador.findByUsername").setParameter("username",username).getResultList();
-      if(users.size() > 0)
-          return users.get(0);
-      else
-          return null;
-    }
-    
-    @Override
-    public int ValidaNovoUseramee(String username) {
-         return dao.getEntityManager().
-                createNamedQuery("Utilizador.findByUsername").setParameter("username",username).getResultList().size();
-                
     }
 
     @Override
@@ -75,6 +53,21 @@ public class UtilizadorFacade  implements UtilizadorFacadeLocal {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-   
+    @Override
+    public int ValidaNovoUseramee(String username) {
+        return dao.getEntityManager().createNamedQuery("Utilizador.findByUsername").setParameter("username", username).getResultList().size();
+    }
+
+    @Override
+    public Utilizador findByUserName(String username) {
+        List<Utilizador> users = dao.getEntityManager().createNamedQuery("Utilizador.findByUsername").setParameter("username", username).getResultList();
+        
+        if(users.size() > 0)
+            return users.get(0);
+        else
+            return null;
+    }
+    
+ 
     
 }
