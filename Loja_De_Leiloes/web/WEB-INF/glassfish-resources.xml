@@ -11,4 +11,6 @@
         <property name="driverClass" value="org.postgresql.Driver"/>
     </jdbc-connection-pool>
     <jdbc-resource enabled="true" jndi-name="java:app/lojaleiloesPU" object-type="user" pool-name="post-gre-sql_postgres_u1617Pool"/>
+    <jdbc-resource enabled="true" jndi-name="java:app/LojaDeLeiloesPU" object-type="user" pool-name="post-gre-sql_postgres_u1617Pool"/>
+    <jdbc-resource enabled="true" jndi-name="java:app/PU" object-type="user" pool-name="post-gre-sql_postgres_u1617Pool"/>
 </resources>

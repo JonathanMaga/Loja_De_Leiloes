@@ -28,6 +28,7 @@ public class RegistaBean {
     }
     
        
+      
     @EJB
     private UtilizadorFacadeLocal utilizadorFacade;
     private String nome;
@@ -109,6 +110,6 @@ public class RegistaBean {
            
         }
          
-    }
+    } 
     
 }
