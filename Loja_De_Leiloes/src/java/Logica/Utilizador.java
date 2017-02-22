@@ -109,6 +109,7 @@ public class Utilizador implements Serializable {
         this.morada = morada;
         this.contato = contato;
         this.password = password;
+      
     }
 
     public Integer getIdSer() {

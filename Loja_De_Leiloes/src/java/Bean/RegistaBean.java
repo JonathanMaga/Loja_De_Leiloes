@@ -7,10 +7,13 @@ package Bean;
 
 import Logica.Utilizador;
 import Logica.UtilizadorFacadeLocal;
+import java.io.IOException;
+import java.util.Scanner;
 
 import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
+import javax.servlet.http.Part;
 
 
 /**
@@ -37,8 +40,11 @@ public class RegistaBean {
     private String password2;
     private int contato;
     private String morada;
+    private Part file;
+    private String fileContent;
     
-        public String getPassword2() {
+    
+    public String getPassword2() {
         return password2;
     }
 
@@ -86,6 +92,23 @@ public class RegistaBean {
 
     public void setMorada(String morada) {
         this.morada = morada;
+    }
+
+    public Part getFile() {
+        return file;
+    }
+
+    public void setFile(Part file) {
+        this.file = file;
+    }
+    
+    
+    public void uploud(){
+        try{
+            fileContent = new Scanner(file.getInputStream()).useDelimiter("\\A").next();
+        }catch(IOException e){
+            //fazer
+        }
     }
     
     

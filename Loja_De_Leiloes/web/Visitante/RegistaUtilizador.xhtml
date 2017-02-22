@@ -23,7 +23,12 @@
             <p/>
             Confirme Password:<h:inputText id="pass2" value="#{registaBean.password2}"  title="Password2" />
             <p/>
+                        Foto de Perfil<h:inputFile id="filePerfil" value="#{registaBean.file}"></h:inputFile>
+            Carregar: <h:commandButton id="upld" value="Upload" action="#{registaBean.uploud()}"></h:commandButton>
+            <p></p>
             <h:commandButton value="Registar" action="#{registaBean.registar()}" id="Regitar"> </h:commandButton>
+            
+
             
         </h:form>
         
