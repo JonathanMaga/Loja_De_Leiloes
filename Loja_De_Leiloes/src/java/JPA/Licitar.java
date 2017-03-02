@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Logica;
+package JPA;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -136,7 +136,7 @@ public class Licitar implements Serializable {
 
     @Override
     public String toString() {
-        return "Logica.Licitar[ licitarPK=" + licitarPK + " ]";
+        return "JPA.Licitar[ licitarPK=" + licitarPK + " ]";
     }
     
 }

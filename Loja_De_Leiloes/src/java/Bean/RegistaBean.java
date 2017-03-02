@@ -5,8 +5,8 @@
  */
 package Bean;
 
-import Logica.Utilizador;
-import Logica.UtilizadorFacadeLocal;
+import JPA.Utilizador;
+import REMOTE.UtilizadorFacadeLocal;
 import java.io.IOException;
 import java.util.Scanner;
 
@@ -40,8 +40,8 @@ public class RegistaBean {
     private String password2;
     private int contato;
     private String morada;
-    private Part file;
-    private String fileContent;
+//    private Part file;
+//    private String fileContent;
     
     
     public String getPassword2() {
@@ -94,22 +94,22 @@ public class RegistaBean {
         this.morada = morada;
     }
 
-    public Part getFile() {
-        return file;
-    }
-
-    public void setFile(Part file) {
-        this.file = file;
-    }
+//    public Part getFile() {
+//        return file;
+//    }
+//
+//    public void setFile(Part file) {
+//        this.file = file;
+//    }
+//    
     
-    
-    public void uploud(){
-        try{
-            fileContent = new Scanner(file.getInputStream()).useDelimiter("\\A").next();
-        }catch(IOException e){
-            //fazer
-        }
-    }
+//    public void uploud(){
+//        try{
+//            fileContent = new Scanner(file.getInputStream()).useDelimiter("\\A").next();
+//        }catch(IOException e){
+//            //fazer
+//        }
+//    }
     
     
     

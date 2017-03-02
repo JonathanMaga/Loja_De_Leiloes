@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Logica;
+package JPA;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -173,7 +173,7 @@ public class Mensagem implements Serializable {
 
     @Override
     public String toString() {
-        return "Logica.Mensagem[ idMensagem=" + idMensagem + " ]";
+        return "JPA.Mensagem[ idMensagem=" + idMensagem + " ]";
     }
     
 }

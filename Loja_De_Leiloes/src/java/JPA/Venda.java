@@ -3,10 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Logica;
+package JPA;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.Collection;
 import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -18,11 +19,13 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -55,11 +58,13 @@ public class Venda implements Serializable {
     @Column(name = "valorvenda")
     private BigDecimal valorvenda;
     @JoinColumn(name = "idleilao", referencedColumnName = "idleilao")
-    @ManyToOne
+    @ManyToOne(optional = false)
     private Leilao idleilao;
     @JoinColumn(name = "id_comprador", referencedColumnName = "id_ser")
     @ManyToOne(optional = false)
     private Utilizador idComprador;
+    @OneToMany(mappedBy = "idVenda")
+    private Collection<Leilao> leilaoCollection;
 
     public Venda() {
     }
@@ -114,6 +119,15 @@ public class Venda implements Serializable {
         this.idComprador = idComprador;
     }
 
+    @XmlTransient
+    public Collection<Leilao> getLeilaoCollection() {
+        return leilaoCollection;
+    }
+
+    public void setLeilaoCollection(Collection<Leilao> leilaoCollection) {
+        this.leilaoCollection = leilaoCollection;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -136,7 +150,7 @@ public class Venda implements Serializable {
 
     @Override
     public String toString() {
-        return "Logica.Venda[ idVenda=" + idVenda + " ]";
+        return "JPA.Venda[ idVenda=" + idVenda + " ]";
     }
     
 }

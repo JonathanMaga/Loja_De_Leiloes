@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Logica;
+package REMOTE;
 
+import JPA.Tipodeconta;
 import java.util.List;
 import javax.ejb.Local;
 
@@ -13,7 +14,7 @@ import javax.ejb.Local;
  * @author jonathan
  */
 @Local
-public interface TipodecontaFacade {
+public interface TipodecontaFacadeLocal {
 
     void create(Tipodeconta tipodeconta);
 

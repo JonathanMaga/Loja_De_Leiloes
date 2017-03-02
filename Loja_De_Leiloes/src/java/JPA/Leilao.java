@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Logica;
+package JPA;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -67,10 +67,15 @@ public class Leilao implements Serializable {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "leilao")
     private Collection<Licitar> licitarCollection;
     @OneToMany(mappedBy = "idleilao")
+    private Collection<Item> itemCollection;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idleilao")
     private Collection<Venda> vendaCollection;
     @JoinColumn(name = "id_item", referencedColumnName = "id_item")
     @ManyToOne(optional = false)
     private Item idItem;
+    @JoinColumn(name = "id_venda", referencedColumnName = "id_venda")
+    @ManyToOne
+    private Venda idVenda;
 
     public Leilao() {
     }
@@ -135,6 +140,15 @@ public class Leilao implements Serializable {
     }
 
     @XmlTransient
+    public Collection<Item> getItemCollection() {
+        return itemCollection;
+    }
+
+    public void setItemCollection(Collection<Item> itemCollection) {
+        this.itemCollection = itemCollection;
+    }
+
+    @XmlTransient
     public Collection<Venda> getVendaCollection() {
         return vendaCollection;
     }
@@ -149,6 +163,14 @@ public class Leilao implements Serializable {
 
     public void setIdItem(Item idItem) {
         this.idItem = idItem;
+    }
+
+    public Venda getIdVenda() {
+        return idVenda;
+    }
+
+    public void setIdVenda(Venda idVenda) {
+        this.idVenda = idVenda;
     }
 
     @Override
@@ -173,7 +195,7 @@ public class Leilao implements Serializable {
 
     @Override
     public String toString() {
-        return "Logica.Leilao[ idleilao=" + idleilao + " ]";
+        return "JPA.Leilao[ idleilao=" + idleilao + " ]";
     }
     
 }

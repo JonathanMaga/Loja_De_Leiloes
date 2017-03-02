@@ -8,7 +8,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <h:outputStylesheet library="css" name="default.css"/>
         <h:outputStylesheet library="css" name="StyleSheet.css"/>
-        <title>Facelets Template</title>
+        <title>Administrador Template</title>
     </h:head>
 
     <h:body>
@@ -33,15 +33,16 @@
                 <div id="templatemo_left_column">
                     <div id="templatemo_left_top"></div>
                    
-                    <ul><li class="button"><h:link value="Gestão de conta" outcome="GestaoDeConta.xhtml"/></li>
-                        <li class="button"><h:link value="Mensagens"/></li>
-                        <li class="button"><h:link value="Vender Item"/></li>
-                        <li class="button"><h:link value="Os meus Itens"/></li>
-                        <li class="button"><h:link value="Leilões"/></li>
-                        <li class="button"><h:link value="Histórico"/></li>
-                        <li class="button"><h:link value="Saldo e Carregamentos" outcome="Carregamentos"/></li>
+                    <ul><li class="button"><h:link value="Home" outcome="homeAdmin"/></li>
+                        <li class="button"><h:link value="Aprovar Utilizadores" outcome="AprovarUtilizadores"/></li>
+                        <li class="button"><h:link value="Itens Denunciados"/></li>
+                        <li class="button"><h:link value="Utilizadores Denunciados"/></li>
+                        <li class="button"><h:link value="Consultar Utilizador"/></li>
+                        <li class="button"><h:link value="Consultar Item"/></li>
+                        <li class="button"><h:link value="Adicionar Categoria"/></li>
+                        <li class="button"><h:link value="Modificar Categoria"/></li>
                         <li class="button"><h:link value="Newsletter"/></li>
-                      
+                        <li class="button"><h:commandLink value="logout" action="#{userController.logout()}"/></li> 
                     </ul>
 
                 </div>

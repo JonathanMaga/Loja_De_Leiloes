@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Logica;
+package JPA;
 
 import java.io.Serializable;
 import javax.persistence.Basic;
@@ -77,7 +77,7 @@ public class LicitarPK implements Serializable {
 
     @Override
     public String toString() {
-        return "Logica.LicitarPK[ licitador=" + licitador + ", idLeilao=" + idLeilao + " ]";
+        return "JPA.LicitarPK[ licitador=" + licitador + ", idLeilao=" + idLeilao + " ]";
     }
     
 }

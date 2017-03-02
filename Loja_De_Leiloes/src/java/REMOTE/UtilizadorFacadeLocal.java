@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Logica;
+package REMOTE;
 
+import JPA.Utilizador;
 import java.util.List;
 import javax.ejb.Local;
 
@@ -29,8 +30,12 @@ public interface UtilizadorFacadeLocal {
 
     int count();
     
+    Utilizador findByUserName(String username);
+     
     int ValidaNovoUseramee(String username);
     
-    Utilizador findByUserName(String username);
+    Utilizador carregamento(double value);
+    
+    List<Utilizador> getUtilizadoresInativos();
     
 }

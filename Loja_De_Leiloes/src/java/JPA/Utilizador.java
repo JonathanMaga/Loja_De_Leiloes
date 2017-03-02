@@ -3,24 +3,29 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Logica;
+package JPA;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.Collection;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -38,9 +43,12 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Utilizador.findByContato", query = "SELECT u FROM Utilizador u WHERE u.contato = :contato")
     , @NamedQuery(name = "Utilizador.findByPassword", query = "SELECT u FROM Utilizador u WHERE u.password = :password")
     , @NamedQuery(name = "Utilizador.findByEstado", query = "SELECT u FROM Utilizador u WHERE u.estado = :estado")
-    , @NamedQuery(name = "Utilizador.findBySaldo", query = "SELECT u FROM Utilizador u WHERE u.saldo = :saldo")
-    , @NamedQuery(name = "Utilizador.findByFotoPerfil", query = "SELECT u FROM Utilizador u WHERE u.fotoPerfil = :fotoPerfil")})
+    , @NamedQuery(name = "Utilizador.findBySaldo", query = "SELECT u FROM Utilizador u WHERE u.saldo = :saldo")})
 public class Utilizador implements Serializable {
+
+    @Lob
+    @Column(name = "foto_perfil")
+    private byte[] fotoPerfil;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -77,9 +85,16 @@ public class Utilizador implements Serializable {
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Column(name = "saldo")
     private BigDecimal saldo;
-    @Size(max = 254)
-    @Column(name = "foto_perfil")
-    private String fotoPerfil;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "utilizador")
+    private Collection<Licitar> licitarCollection;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "vendedor")
+    private Collection<Item> itemCollection;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idComprador")
+    private Collection<Venda> vendaCollection;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "destinatario")
+    private Collection<Mensagem> mensagemCollection;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "remetente")
+    private Collection<Mensagem> mensagemCollection1;
     @JoinColumn(name = "id_tipo_conta", referencedColumnName = "id_tipo_conta")
     @ManyToOne(optional = false)
     private Tipodeconta idTipoConta;
@@ -99,7 +114,7 @@ public class Utilizador implements Serializable {
         this.password = password;
         this.saldo = new BigDecimal(0.00);
         this.estado = false;
-        this.idTipoConta = new Tipodeconta(1);  
+        this.idTipoConta = new Tipodeconta(2);  
     }
 
     public Utilizador(Integer idSer, String nomeUser, String username, String morada, int contato, String password) {
@@ -109,7 +124,6 @@ public class Utilizador implements Serializable {
         this.morada = morada;
         this.contato = contato;
         this.password = password;
-      
     }
 
     public Integer getIdSer() {
@@ -176,12 +190,50 @@ public class Utilizador implements Serializable {
         this.saldo = saldo;
     }
 
-    public String getFotoPerfil() {
-        return fotoPerfil;
+
+    @XmlTransient
+    public Collection<Licitar> getLicitarCollection() {
+        return licitarCollection;
     }
 
-    public void setFotoPerfil(String fotoPerfil) {
-        this.fotoPerfil = fotoPerfil;
+    public void setLicitarCollection(Collection<Licitar> licitarCollection) {
+        this.licitarCollection = licitarCollection;
+    }
+
+    @XmlTransient
+    public Collection<Item> getItemCollection() {
+        return itemCollection;
+    }
+
+    public void setItemCollection(Collection<Item> itemCollection) {
+        this.itemCollection = itemCollection;
+    }
+
+    @XmlTransient
+    public Collection<Venda> getVendaCollection() {
+        return vendaCollection;
+    }
+
+    public void setVendaCollection(Collection<Venda> vendaCollection) {
+        this.vendaCollection = vendaCollection;
+    }
+
+    @XmlTransient
+    public Collection<Mensagem> getMensagemCollection() {
+        return mensagemCollection;
+    }
+
+    public void setMensagemCollection(Collection<Mensagem> mensagemCollection) {
+        this.mensagemCollection = mensagemCollection;
+    }
+
+    @XmlTransient
+    public Collection<Mensagem> getMensagemCollection1() {
+        return mensagemCollection1;
+    }
+
+    public void setMensagemCollection1(Collection<Mensagem> mensagemCollection1) {
+        this.mensagemCollection1 = mensagemCollection1;
     }
 
     public Tipodeconta getIdTipoConta() {
@@ -214,7 +266,15 @@ public class Utilizador implements Serializable {
 
     @Override
     public String toString() {
-        return "Logica.Utilizador[ idSer=" + idSer + " ]";
+        return "ID: "+this.idSer +", " +this.username;
+    }
+
+    public byte[] getFotoPerfil() {
+        return fotoPerfil;
+    }
+
+    public void setFotoPerfil(byte[] fotoPerfil) {
+        this.fotoPerfil = fotoPerfil;
     }
     
 }

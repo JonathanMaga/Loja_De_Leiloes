@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Logica;
+package JPA;
 
 import java.io.Serializable;
 import java.util.Collection;
@@ -96,12 +96,14 @@ public class Tipodeconta implements Serializable {
         if ((this.idTipoConta == null && other.idTipoConta != null) || (this.idTipoConta != null && !this.idTipoConta.equals(other.idTipoConta))) {
             return false;
         }
+        
+        
         return true;
     }
 
     @Override
     public String toString() {
-        return "Logica.Tipodeconta[ idTipoConta=" + idTipoConta + " ]";
+        return "JPA.Tipodeconta[ idTipoConta=" + idTipoConta + " ]";
     }
     
 }

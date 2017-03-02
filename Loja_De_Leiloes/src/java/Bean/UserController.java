@@ -5,11 +5,13 @@
  */
 package Bean;
 
-import Logica.Utilizador;
-import Logica.UtilizadorFacadeLocal;
+
+import JPA.Utilizador;
+import REMOTE.UtilizadorFacadeLocal;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
+import java.math.BigDecimal;
 import javax.ejb.EJB;
 
 
@@ -29,6 +31,7 @@ public class UserController implements Serializable {
     private String ThisUsername = "guest";
     private String Username;
     private String Password;
+    private String valorCarregamento;
     Utilizador utilizador;
     
     
@@ -56,6 +59,7 @@ public class UserController implements Serializable {
     
     
     
+    
         public String validateUserAccess() {
         if (ThisUsername.compareTo("guest")==0)
             return "Login";  // vai mais é fazer login
@@ -69,6 +73,9 @@ public class UserController implements Serializable {
      if(utilizador.getUsername().equals(this.Username)){
          if(utilizador.getPassword().equals(this.Password)){
              ThisUsername = utilizador.getUsername();
+             if(utilizador.getIdTipoConta().getIdTipoConta().equals(1))
+             return "homeAdmin";   
+             else
              return "FirstPageCliente";
          }
          else{
@@ -78,7 +85,33 @@ public class UserController implements Serializable {
      else{
           return null;
      }
-        
-     
-    }    
+      
+    } 
+    
+    public String logout() {
+        ThisUsername = "guest";
+        Username=Password="";
+        return "Logout";
+    }
+    public Utilizador getUtilizador() {
+        return utilizador;
+    }
+
+    public void setUtilizador(Utilizador utilizador) {
+        this.utilizador = utilizador;
+    }
+
+    public String getValorCarregamento() {
+        return valorCarregamento;
+    }
+
+    public void setValorCarregamento(String valorCarregamento) {
+        this.valorCarregamento = valorCarregamento;
+    }
+    
+    public void carregamento(){
+       this.utilizador = utilizadorFacade.carregamento(Double.parseDouble(valorCarregamento));
+    }
+    
+
 }

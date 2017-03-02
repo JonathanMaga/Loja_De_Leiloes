@@ -3,17 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Logica;
+package REMOTE;
 
 import javax.ejb.Local;
 import javax.persistence.EntityManager;
+
 /**
  *
  * @author jonathan
  */
 @Local
 public interface DAOLocal {
-
     EntityManager getEntityManager();
-    
 }

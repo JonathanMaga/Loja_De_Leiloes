@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Logica;
+package JPA;
 
 import java.io.Serializable;
 import java.util.Collection;
@@ -15,6 +15,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -53,9 +54,15 @@ public class Item implements Serializable {
     @Size(max = 2147483647)
     @Column(name = "descricao_item")
     private String descricaoItem;
+    @Lob
+    @Column(name = "imagem_item")
+    private byte[] imagemItem;
     @JoinColumn(name = "id_categoria", referencedColumnName = "id_categoria")
     @ManyToOne(optional = false)
     private Categorias idCategoria;
+    @JoinColumn(name = "idleilao", referencedColumnName = "idleilao")
+    @ManyToOne
+    private Leilao idleilao;
     @JoinColumn(name = "vendedor", referencedColumnName = "id_ser")
     @ManyToOne(optional = false)
     private Utilizador vendedor;
@@ -100,12 +107,28 @@ public class Item implements Serializable {
         this.descricaoItem = descricaoItem;
     }
 
+    public byte[] getImagemItem() {
+        return imagemItem;
+    }
+
+    public void setImagemItem(byte[] imagemItem) {
+        this.imagemItem = imagemItem;
+    }
+
     public Categorias getIdCategoria() {
         return idCategoria;
     }
 
     public void setIdCategoria(Categorias idCategoria) {
         this.idCategoria = idCategoria;
+    }
+
+    public Leilao getIdleilao() {
+        return idleilao;
+    }
+
+    public void setIdleilao(Leilao idleilao) {
+        this.idleilao = idleilao;
     }
 
     public Utilizador getVendedor() {
@@ -156,7 +179,7 @@ public class Item implements Serializable {
 
     @Override
     public String toString() {
-        return "Logica.Item[ idItem=" + idItem + " ]";
+        return "JPA.Item[ idItem=" + idItem + " ]";
     }
     
 }
